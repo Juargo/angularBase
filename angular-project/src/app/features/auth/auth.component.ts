@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthFacade } from '@storeApp/auth/auth.facades';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authFacade:AuthFacade) { }
 
   ngOnInit(): void {
+  }
+
+  auth():void{
+    console.log("LOgin")
+    this.authFacade.Login("yo","psss")
   }
 
 }

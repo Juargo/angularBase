@@ -11,8 +11,8 @@ import { StateAuth } from './auth.reducers';
 export class AuthFacade {
   constructor(private store: Store<StateAuth>) {} //El tipo dentro <> debe ser igual a lo que puede devolver en las funciones de selectors
 
-  public Login(user: string, password: string) {
-    this.store.dispatch(authActions.login({ user, password }));
+  public Login(user: string, pass: string) {
+    this.store.dispatch(authActions.login({ request: { user, pass } }));
   }
 
   public Login$(): Observable<string> {

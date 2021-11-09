@@ -18,6 +18,9 @@
     "module": "es2020",
     "paths": {
       "@environment": ["src/environments/environment"],
+      "@model":["src/app/core/model"],
+      "@services":["src/app/core/service"],
+      "@storeApp/*":["src/app/store-app/*"]
 },
     "lib": [
       "es2018",

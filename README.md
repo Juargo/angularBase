@@ -32,6 +32,18 @@
 - `npm install @ngrx/store-devtools`
 - `ng g m store-app`
 
+## Configs
+
+- In app.module.ts import
+
+```json
+import { environment } from '@environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import[
+!environment.production ? StoreDevtoolsModule.instrument() : [],
+]
+```
+
 ### auth
 
 - `mkdir store-app/auth`
@@ -40,7 +52,51 @@
 - `mkdir store-app/<feature>/<feature>.reducers.ts` *implement*
 - `mkdir store-app/<feature>/<feature>.selectors.ts` *implement*
 - `mkdir store-app/<feature>/<feature>.facade.ts` *implement*
-
-
-
+- Add this path to tsconfig.js
+  - `"@storeApp/*":["src/app/store-app/*"]`
+  
 ## Services
+
+- `mkdir core/model`
+- `touch core/model/auth.model.ts` *implenent*
+- Create index to export model `touch core/model/index.ts`
+  - ```export * from './auth.model'```
+- Add this path to tsconfig.js
+  - `"@model":["src/app/core/model"],`
+- `ng g s core/service/auth` *implement*
+- Create indes to export services `touch core/service/index.ts`
+  - `export * from './auth.service'`
+- Add this path to tsconfig.js
+  - `"@services":["src/app/core/service"]`
+
+## Config NGRX
+
+- Add StoreModule to StoreApp.module.ts
+
+```json
+  EffectsModule.forFeature([AuthEffects]),
+    StoreModule.forFeature(
+       authReduce.authFeaturekey,
+       authReduce.reducerAuth
+    )
+```
+
+- Add this to de app.module.ts
+
+```json
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+imports:[
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+]
+```
+
+## Guard
+
+- `ng g guard core/guards/main` canActivate *implement*
+- Add CanActivate to app-routing.module.ts
+  - `canActivate:[MainGuard]`
+- `ng g guard core/guards/auth` canActivate *implement*
+- Add CanActivate to app-routing.module.ts
+  - `canActivate:[AuthGuard]`
