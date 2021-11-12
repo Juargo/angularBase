@@ -14,7 +14,6 @@ export class AuthComponent implements OnInit {
   }
 
   auth():void{
-    console.log("LOgin")
     this.authFacade.Login("yo","psss")
   }
 

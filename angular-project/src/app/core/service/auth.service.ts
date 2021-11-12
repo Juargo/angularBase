@@ -12,7 +12,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(request: RequestAuth):Observable<string>{
-    console.log("sadas")
     return this.http.post<string>(`${environment.api}/auth/login`,request)
   }
 }

@@ -1,4 +1,10 @@
-# Intrucciones
+# Angular Bases
+
+## Arquitectura
+
+![arch](./img/arquitectura.PNG)
+
+## Intrucciones
 
 - `ng new angular-project`
   - `Would you like to add Angular routing? Yes`
@@ -15,7 +21,7 @@
   - `{ path: '', redirectTo: main, pathMatch: 'full' }`
 - `ng g m features/auth --route auth --module app.module --routing`
 
-## Configs
+### Configs
 
 - In tsconfig.js before libs add
   
@@ -25,14 +31,14 @@
 }
 ```
 
-## NGRX
+### NGRX
 
 - `npm install @ngrx/store`
 - `npm install @ngrx/effects`
 - `npm install @ngrx/store-devtools`
 - `ng g m store-app`
 
-## Configs
+### Configs
 
 - In app.module.ts import
 
@@ -44,7 +50,7 @@ import[
 ]
 ```
 
-### auth
+#### auth
 
 - `mkdir store-app/auth`
 - `mkdir store-app/<feature>/<feature>.actions.ts` *implement*
@@ -55,7 +61,7 @@ import[
 - Add this path to tsconfig.js
   - `"@storeApp/*":["src/app/store-app/*"]`
   
-## Services
+### Services
 
 - `mkdir core/model`
 - `touch core/model/auth.model.ts` *implenent*
@@ -69,7 +75,7 @@ import[
 - Add this path to tsconfig.js
   - `"@services":["src/app/core/service"]`
 
-## Config NGRX
+### Config NGRX
 
 - Add StoreModule to StoreApp.module.ts
 
@@ -92,7 +98,7 @@ imports:[
 ]
 ```
 
-## Guard
+### Guard
 
 - `ng g guard core/guards/main` canActivate *implement*
 - Add CanActivate to app-routing.module.ts

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { AuthFacade } from '@storeApp/auth/auth.facades';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-layout',
@@ -9,10 +10,14 @@ import { AuthFacade } from '@storeApp/auth/auth.facades';
 })
 export class MainLayoutComponent implements OnInit {
   login$: Observable<string> = of()
-  constructor(private authFacade:AuthFacade) { }
+  constructor(private authFacade:AuthFacade,private router:Router) { }
 
   ngOnInit(): void {
     this.login$ = this.authFacade.Login$()
   }
 
+  Logout():void{
+    this.router.navigate(["/auth"])
+    localStorage.clear()
+  }
 }

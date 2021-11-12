@@ -5,10 +5,10 @@ import { catchError, concatMap, map, tap } from 'rxjs/operators';
 import * as authActions from './auth.actions';
 import { AuthService } from '@services';
 import { of } from 'rxjs';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(private actions$: Actions, private authService: AuthService,private router:Router) {}
 
   loginEffect$ = createEffect(() =>
     this.actions$.pipe(
@@ -38,8 +38,8 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType(authActions.loginSuccess),
         tap(({ login }) => {
-          console.log('login');
           localStorage.setItem('auth', login);
+          this.router.navigate(["/main"])
         })
       ),
     { dispatch: false }
