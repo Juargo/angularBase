@@ -1,3 +1,9 @@
 <p>main-layout works!</p>
 <button (click)="Logout()">Logout</button>
 {{login$|async}}
+
+<a href="" routerLink="/">Home</a>
+<a href="" [routerLink]="['pokemon']" [queryParams]="{allow:1}">Pokémon</a>
+<a href="" [routerLink]="['digimon']">Digimon</a>
+
+<router-outlet></router-outlet>
