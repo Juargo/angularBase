@@ -18,7 +18,7 @@
 - Replace all in app.component.html for
   - `<router-outlet></router-outlet>`
 - Add this route to to app-routing.module file
-  - `{ path: '', redirectTo: main, pathMatch: 'full' }`
+  - `{ path: '', redirectTo: 'main', pathMatch: 'full' }`
 - `ng g m features/auth --route auth --module app.module --routing`
 
 ### Configs
