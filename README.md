@@ -76,6 +76,14 @@ import[
   - `"@services":["src/app/core/service"]`
 
 ### Config NGRX
+- Add StoreModel in core.model.ts
+ ``
+ imports: [
+    CommonModule,
+    HttpClientModule,
+    StoreAppModule
+  ]
+``
 
 - Add StoreModule to StoreApp.module.ts
 
